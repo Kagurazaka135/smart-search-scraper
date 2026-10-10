@@ -1,0 +1,24 @@
+identity:
+  author: "kagurazaka135"
+  name: "smart_search_scraper"
+  label:
+    en_US: "Smart Search (Scraper)"
+    zh_Hans: "智能搜索（裸爬版）"
+    ja_JP: "スマート検索（スクレイパー）"
+    pt_BR: "Busca Inteligente (Scraper)"
+  description:
+    en_US: "Multi-round LLM-driven web search that reads public result pages directly. No search API key required."
+    zh_Hans: "多轮 LLM 驱动的网页搜索，直接读取公开搜索结果页，无需任何搜索 API key。"
+    ja_JP: "公開された検索結果ページを直接読み取る、マルチラウンドの LLM 駆動ウェブ検索。検索 API キー不要。"
+    pt_BR: "Busca na web em múltiplas rodadas lendo diretamente páginas de resultados públicas. Sem chave de API."
+  icon: "icon.svg"
+
+# This provider requires no credentials: it reads public search result pages
+# (Bing / DuckDuckGo HTML) instead of calling a search API.
+
+tools:
+  - tools/smart_search.yaml
+
+extra:
+  python:
+    source: provider/smart_search_scraper.py

@@ -1,0 +1,43 @@
+version: 0.0.1
+type: plugin
+author: kagurazaka135
+name: smart-search-scraper
+label:
+  en_US: Smart Search (Scraper)
+  zh_Hans: 智能搜索（裸爬版）
+  ja_JP: スマート検索（スクレイパー）
+  pt_BR: Busca Inteligente (Scraper)
+description:
+  en_US: Multi-round LLM-driven web search that reads public result pages directly (no search API key required).
+  zh_Hans: 多轮 LLM 驱动的网页搜索——直接读取公开搜索结果页，无需任何搜索 API key。
+  ja_JP: マルチラウンドの LLM 駆動ウェブ検索。公開された検索結果ページを直接読み取ります（検索 API キー不要）。
+  pt_BR: Busca na web em múltiplas rodadas lendo diretamente as páginas de resultados públicas (sem chave de API de busca).
+icon: icon.svg
+icon_dark: icon-dark.svg
+resource:
+  memory: 268435456
+  permission:
+    model:
+      enabled: true
+      llm: true
+plugins:
+  tools:
+    - provider/smart_search_scraper.yaml
+meta:
+  version: 0.0.1
+  arch:
+    - amd64
+    - arm64
+  runner:
+    language: python
+    version: "3.12"
+    entrypoint: main
+  minimum_dify_version: "1.0.0"
+created_at: 2026-10-11T02:20:00+08:00
+privacy: PRIVACY.md
+repo: https://github.com/Kagurazaka135/dify-smart-search-scraper
+tags:
+  - search
+  - productivity
+  - utilities
+verified: false

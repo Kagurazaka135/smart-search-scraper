@@ -1,0 +1,84 @@
+identity:
+  name: "smart_search"
+  author: "kagurazaka135"
+  label:
+    en_US: "Smart Search"
+    zh_Hans: "智能搜索"
+    ja_JP: "スマート検索"
+    pt_BR: "Busca Inteligente"
+description:
+  human:
+    en_US: "Multi-round LLM-driven web search with structured, balanced summarization. Reads public result pages directly; no search API key needed."
+    zh_Hans: "多轮 LLM 驱动的网页搜索，输出结构化、平衡的汇总。直接读取公开搜索结果页，无需搜索 API key。"
+    ja_JP: "マルチラウンドの LLM 駆動ウェブ検索と、構造化された要約。公開結果ページを直接読み取ります（検索 API キー不要）。"
+    pt_BR: "Busca na web em múltiplas rodadas com resumo estruturado. Lê páginas públicas diretamente, sem chave de API."
+  llm: "Search the web over multiple rounds by reading public search result pages. The tool first expands the query into several search angles, runs them, scores the results with the given model, re-searches when results are thin, and returns supporting/opposing/neutral points with a summary and a confidence level. Use it for research-style questions where a single search is not enough. No search API key is required."
+parameters:
+  - name: query
+    type: string
+    required: true
+    label:
+      en_US: "Query"
+      zh_Hans: "查询"
+      ja_JP: "クエリ"
+      pt_BR: "Consulta"
+    human_description:
+      en_US: "The question or topic to research."
+      zh_Hans: "要研究的问题或主题。"
+      ja_JP: "調査する質問やトピック。"
+      pt_BR: "A pergunta ou tópico a pesquisar."
+    llm_description: "The question or topic to research on the web."
+    form: llm
+  - name: model
+    type: model-selector
+    scope: llm
+    required: true
+    label:
+      en_US: "Model"
+      zh_Hans: "模型"
+      ja_JP: "モデル"
+      pt_BR: "Modelo"
+    human_description:
+      en_US: "Workspace LLM used for query expansion, quality scoring and summarization."
+      zh_Hans: "用于拆词、评质和汇总的工作区 LLM。"
+      ja_JP: "クエリ拡張・品質評価・要約に使うワークスペース LLM。"
+      pt_BR: "LLM do workspace usado para expandir, avaliar e resumir."
+    llm_description: "The language model used to expand the query, score results and write the summary."
+    form: form
+  - name: max_rounds
+    type: number
+    required: false
+    default: 3
+    min: 1
+    max: 10
+    label:
+      en_US: "Max Rounds"
+      zh_Hans: "最大轮数"
+      ja_JP: "最大ラウンド数"
+      pt_BR: "Máximo de rodadas"
+    human_description:
+      en_US: "Maximum number of search rounds before the plugin stops refining."
+      zh_Hans: "在停止细化前允许的最大搜索轮数。"
+      ja_JP: "絞り込みを止めるまでの最大検索ラウンド数。"
+      pt_BR: "Número máximo de rodadas antes de parar de refinar."
+    llm_description: "Maximum number of search rounds. Defaults to 3."
+    form: form
+  - name: fetch_content
+    type: boolean
+    required: false
+    default: false
+    label:
+      en_US: "Fetch Content"
+      zh_Hans: "抓取正文"
+      ja_JP: "本文を取得"
+      pt_BR: "Buscar conteúdo"
+    human_description:
+      en_US: "Fetch and read page text from top result URLs."
+      zh_Hans: "抓取并阅读高质量结果页面的正文。"
+      ja_JP: "上位結果のページ本文を取得して読む。"
+      pt_BR: "Buscar e ler o texto das páginas dos principais resultados."
+    llm_description: "Whether to fetch page text from top results. Defaults to false."
+    form: form
+extra:
+  python:
+    source: tools/smart_search.py
