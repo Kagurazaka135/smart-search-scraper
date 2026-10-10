@@ -1,0 +1,11 @@
+# Keeps dev / VCS artifacts out of the packaged .difypkg (gitignore syntax).
+.git/
+.gitignore
+.env
+.env.example
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.difypkg
